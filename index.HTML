@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Portfolio — Your Name</title>
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1320; --text:#e6eef8; --muted:#9bb0c8; --accent:#6ee7b7;
+      --glass: rgba(255,255,255,0.035);
+      --radius:14px;
+      --maxw:1100px;
+      --fw-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:var(--fw-sans); background:linear-gradient(180deg,var(--bg),#071024 140%);
+      color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      line-height:1.5; padding:32px 18px;
+      display:flex; justify-content:center;
+    }
+
+    .wrap{width:100%; max-width:var(--maxw)}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:grid;place-items:center;font-weight:700;color:#012;box-shadow:0 6px 18px rgba(0,0,0,0.45)}
+    h1.site-title{font-size:16px;margin:0}
+    p.role{margin:0;color:var(--muted);font-size:13px}
+
+    nav{display:flex;gap:8px}
+    nav button{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);padding:8px 12px;border-radius:9px;cursor:pointer}
+    nav button:hover{transform:translateY(-2px)}
+
+    .grid{display:grid;grid-template-columns:1fr 380px;gap:20px}
+    @media(max-width:900px){.grid{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start} nav{width:100%;overflow:auto}}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter: blur(6px);border-radius:var(--radius);padding:20px;border:1px solid rgba(255,255,255,0.03)}
+
+    /* Hero */
+    .hero{display:flex;gap:18px;align-items:center}
+    .hero .avatar{width:120px;height:120px;border-radius:16px;background:linear-gradient(180deg,#0ea5a5,#7c3aed);display:grid;place-items:center;font-size:40px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+    .hero h2{margin:0;font-size:22px}
+    .hero p{margin:6px 0 0;color:var(--muted)}
+
+    /* About */
+    .about{margin-top:18px}
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .skill{padding:8px 10px;background:var(--glass);border-radius:999px;font-size:13px;color:var(--text);border:1px solid rgba(255,255,255,0.03)}
+
+    /* Projects */
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
+    @media(max-width:700px){.projects{grid-template-columns:1fr}}
+    .project{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+    .project h3{margin:0 0 6px 0}
+    .project p{margin:0;color:var(--muted);font-size:13px}
+    .tags{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.03)}
+
+    /* Sidebar */
+    .sidebar .contact{display:flex;flex-direction:column;gap:8px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#042a20;font-weight:700;border:none;cursor:pointer}
+
+    /* Footer */
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* small niceties */
+    .muted{color:var(--muted)}
+    input,textarea{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);resize:vertical}
+
+    /* theme toggle */
+    .theme-toggle{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px;border-radius:10px;cursor:pointer}
+
+    /* animations */
+    .fade-up{transform:translateY(10px);opacity:0;transition:all .5s ease;}
+    .fade-up.show{transform:none;opacity:1}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">YN</div>
+        <div>
+          <h1 class="site-title">Your Name</h1>
+          <p class="role">Frontend Developer • Designer</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <nav>
+          <button data-scroll="about">About</button>
+          <button data-scroll="projects">Projects</button>
+          <button data-scroll="contact">Contact</button>
+        </nav>
+        <button class="theme-toggle" id="themeBtn" title="Toggle theme">🌗</button>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section>
+        <div class="card hero fade-up" id="hero">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:20px">
+            <div style="display:flex;gap:18px;align-items:center">
+              <div class="avatar">YN</div>
+              <div>
+                <h2>Hello — I'm <strong>Your Name</strong></h2>
+                <p>Building clean, accessible interfaces and delightful experiences.</p>
+                <div style="margin-top:10px">
+                  <a class="btn" id="resumeBtn" href="#" onclick="return false">Download Resume</a>
+                </div>
+              </div>
+            </div>
+            <div class="muted" style="font-size:13px">Based in: Your City</div>
+          </div>
+
+          <div class="about" id="about">
+            <h3>About me</h3>
+            <p class="muted">I’m a frontend developer who loves turning ideas into polished products. I enjoy JavaScript, accessibility, and designing approachable interfaces.</p>
+            <div class="skills">
+              <span class="skill">HTML</span>
+              <span class="skill">CSS</span>
+              <span class="skill">JavaScript</span>
+              <span class="skill">React</span>
+              <span class="skill">UI/UX</span>
+            </div>
+          </div>
+
+          <div class="projects" id="projects">
+            <div class="project">
+              <h3>Project One</h3>
+              <p class="muted">A short description that explains the challenge and the result.</p>
+              <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+            </div>
+            <div class="project">
+              <h3>Project Two</h3>
+              <p class="muted">Brief one-liner describing the project highlights.</p>
+              <div class="tags"><span class="tag">React</span><span class="tag">API</span></div>
+            </div>
+            <div class="project">
+              <h3>Project Three</h3>
+              <p class="muted">Responsive site with focus on accessibility.</p>
+              <div class="tags"><span class="tag">Accessibility</span><span class="tag">Performance</span></div>
+            </div>
+            <div class="project">
+              <h3>Project Four</h3>
+              <p class="muted">Design system and component library.</p>
+              <div class="tags"><span class="tag">Design</span><span class="tag">Tokens</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card fade-up" style="margin-top:16px;padding:16px">
+          <h3>Selected Work</h3>
+          <p class="muted">Want to see full case studies or the code? Click the buttons on the right to contact me.</p>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <div class="card contact fade-up" style="position:sticky;top:24px">
+          <h3>Contact</h3>
+          <form id="contactForm">
+            <label class="muted">Your email</label>
+            <input type="email" id="email" placeholder="you@example.com" required />
+            <label class="muted" style="margin-top:8px">Message</label>
+            <textarea id="message" rows="4" placeholder="Hi — I’d like to work with you..." required></textarea>
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <button class="btn" type="submit">Send</button>
+              <button class="btn" type="button" id="clearBtn">Clear</button>
+            </div>
+          </form>
+
+          <div style="margin-top:14px">
+            <h4 style="margin:0 0 8px 0">Quick links</h4>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <button onclick="openLink('#')">GitHub</button>
+              <button onclick="openLink('#')">LinkedIn</button>
+              <button onclick="openLink('#')">Twitter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card fade-up" style="margin-top:12px;text-align:center">
+          <h4>Availability</h4>
+          <p class="muted">Open for freelance and full-time work.</p>
+        </div>
+
+      </aside>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> Your Name • Built with ❤️</p>
+    </footer>
+  </div>
+
+  <script>
+    // small helper: smooth scroll
+    document.querySelectorAll('button[data-scroll]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const id = btn.getAttribute('data-scroll');
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
+
+    // theme toggle (light variant)
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', ()=>{
+      if(document.documentElement.hasAttribute('data-light')){
+        document.documentElement.removeAttribute('data-light');
+      } else {
+        document.documentElement.setAttribute('data-light','');
+      }
+      applyTheme();
+    });
+    function applyTheme(){
+      if(document.documentElement.hasAttribute('data-light')){
+        document.documentElement.style.setProperty('--bg','#f6fbff');
+        document.documentElement.style.setProperty('--card','#ffffff');
+        document.documentElement.style.setProperty('--text','#042037');
+        document.documentElement.style.setProperty('--muted','#375a72');
+        document.documentElement.style.setProperty('--accent','#60a5fa');
+        document.documentElement.style.setProperty('--glass','rgba(2,8,23,0.02)');
+      } else {
+        document.documentElement.style.removeProperty('--bg');
+        document.documentElement.style.removeProperty('--card');
+        document.documentElement.style.removeProperty('--text');
+        document.documentElement.style.removeProperty('--muted');
+        document.documentElement.style.removeProperty('--accent');
+        document.documentElement.style.removeProperty('--glass');
+      }
+    }
+
+    // contact form demo handling (no external requests)
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      if(!email || !msg) return alert('Please fill both fields.');
+      // simple local validation
+      if(!/.+@.+\..+/.test(email)) return alert('Please enter a valid email address.');
+
+      // pretend to send — but we'll just show a friendly message
+      alert('Thanks! Your message has been recorded locally. (This demo does not send emails.)');
+      form.reset();
+    });
+    document.getElementById('clearBtn').addEventListener('click', ()=>form.reset());
+
+    // resume button -> generate a tiny resume file on the fly
+    document.getElementById('resumeBtn').addEventListener('click', ()=>{
+      const content = `Your Name\nFrontend Developer\n\nSkills:\n- HTML/CSS/JS\n- React\n- Accessibility\n- UI Design\n\nEmail: you@example.com\nWebsite: your-portfolio.local`;
+      const blob = new Blob([content],{type:'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'resume.txt'; document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    // quick link handler
+    function openLink(url){
+      // demo: open in new tab if allowed. Here we just alert since no external links requested.
+      alert('This is a demo. Replace openLink("#") with real URLs.');
+    }
+
+    // small entrance animations when in viewport
+    const observers = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('show');
+      });
+    },{threshold:0.12});
+    document.querySelectorAll('.fade-up').forEach(n=>observers.observe(n));
+
+    // footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
